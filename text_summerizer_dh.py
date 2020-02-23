@@ -91,7 +91,7 @@ def create_summary(file_name, top_n=5):
     #to rank sentences
     #s ?
     ranked_sent=sorted(((sent_scores[i],s)for i,s in enumerate(sentences)),reverse=True)
-    print("indexes are:", ranked_sent)
+    #print("indexes are:", ranked_sent)
 
     for rs in ranked_sent:
         summarize_text.append(" ".join(str(rs)))
