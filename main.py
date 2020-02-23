@@ -14,9 +14,8 @@
 
 # [START gae_flex_quickstart]
 import logging
-from werkzeug.exceptions import HTTPException
-from flask import Flask, render_template, json, request
 
+from flask import Flask, render_template
 
 
 app = Flask(__name__)
@@ -24,6 +23,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+<<<<<<< HEAD
     return render_template('index.html', title="Home")
 
 
@@ -53,6 +53,17 @@ def handle_exception(e):
                            code=e.code, name=e.name,
                            description=e.description, title=(str(e.code) + " " + e.name))
 
+=======
+    return render_template('index.html')
+
+@app.errorhandler(500)
+def server_error(e):
+    logging.exception('An error occurred during a request.')
+    return """
+    An internal error occurred: <pre>{}</pre>
+    See logs for full stacktrace.
+    """.format(e), 500
+>>>>>>> parent of bb676ff... Push 6
 
 
 if __name__ == '__main__':
