@@ -8,7 +8,7 @@ from nltk.cluster.util import cosine_distance
 def main():
     print("test")
     top_n=5
-    create_summary("test.txt",top_n)
+    create_summary(file_name,top_n)
 
 
 
@@ -91,7 +91,7 @@ def create_summary(file_name, top_n=5):
     #to rank sentences
     #s ?
     ranked_sent=sorted(((sent_scores[i],s)for i,s in enumerate(sentences)),reverse=True)
-    print("indexes are:", ranked_sent)
+    #print("indexes are:", ranked_sent)
 
     for rs in ranked_sent:
         summarize_text.append(" ".join(str(rs)))
