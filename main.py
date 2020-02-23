@@ -17,12 +17,17 @@ import logging
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 from flask import Flask, render_template
 =======
 >>>>>>> parent of bb676ff... Push 6
 
 from flask import Flask, render_template
+=======
+
+from flask import Flask, render_template
+>>>>>>> parent of bb676ff... Push 6
 =======
 
 from flask import Flask, render_template
@@ -37,6 +42,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -77,6 +83,8 @@ def handle_exception(e):
 >>>>>>> parent of bb676ff... Push 6
 =======
 >>>>>>> parent of bb676ff... Push 6
+=======
+>>>>>>> parent of bb676ff... Push 6
     return render_template('index.html')
 
 @app.errorhandler(500)
@@ -89,6 +97,9 @@ def server_error(e):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of bb676ff... Push 6
+=======
 >>>>>>> parent of bb676ff... Push 6
 =======
 >>>>>>> parent of bb676ff... Push 6
