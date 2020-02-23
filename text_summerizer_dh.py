@@ -8,7 +8,7 @@ from nltk.cluster.util import cosine_distance
 def main():
     print("test")
     top_n=5
-    create_summary("test.txt",top_n)
+    create_summary(file_name,top_n)
 
 
 
