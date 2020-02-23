@@ -6,6 +6,7 @@ https://templatemo.com/tm-525-the-town
 
 */
 
+
 html {
   font-size: 18px;
 }
@@ -49,6 +50,11 @@ a:focus {
   font-size: 1.25rem;
 }
 
+.search-bar {
+  padding-top: 20%;
+  line-height: 10px;
+}
+
 .tm-btn-primary {
   color: white;
   background-color: #3496d8;
@@ -68,7 +74,7 @@ a:focus {
   position: fixed;
   width: 100%;
   z-index: 1000;
-  background-color: transparent;
+  background-color: white;
   transition: all 0.3s ease;
 }
 
@@ -78,7 +84,7 @@ a:focus {
 }
 
 .navbar-brand {
-  color: white;
+  color: gray;
   font-size: 1.4rem;
   font-weight: bold;
 }
@@ -97,7 +103,7 @@ a:focus {
 }
 
 .tm-nav-link {
-  color: white;
+  color: gray;
 }
 
 .tm-navbar.scroll .tm-nav-link {
@@ -132,11 +138,13 @@ a:focus {
 /* Hero */
 
 #hero {
-  background-image: url(../img/the-town-bg-01.jpg);
+  background-image: url(/static/img/the-town-bg-02.jpg);
   background-repeat: no-repeat;
   height: 100vh;
   min-height: 375px;
+  width: 100%;
   position: relative;
+  z-index: 1;
 }
 
 @media (min-height: 830px) {
@@ -176,13 +184,12 @@ a:focus {
 }
 
 .tm-hero-title {
-  font-size: 3.5rem;
-  text-shadow: 2px 2px 2px #333;
+  font-size: 4.5rem;
+  text-shadow: 5px 5px 5px #0b0b0b;
 }
 
 .tm-intro-next {
   position: absolute;
-  bottom: 100px;
   left: 0;
   right: 0;
 }
@@ -416,10 +423,12 @@ figure.effect-honey:hover h2 i {
 
 #contact {
   color: white;
-  background-image: url(../img/the-town-bg-02.jpg);
+  background-image: url(/static/img/the-town-bg-01.png);
   background-position: center;
   background-repeat: no-repeat;
   min-height: 850px;
+overflow: hidden;
+    background-size: cover;
   position: relative;
   padding-bottom: 50px;
   padding-top: 160px;
@@ -555,6 +564,7 @@ p {
 
 @media (max-width: 767px) {
   .tm-btn-submit {
+    margin-left: 20px;
     margin-left: 20px;
     margin-top: 0;
   }

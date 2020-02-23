@@ -13,51 +13,42 @@
 # limitations under the License.
 
 # [START gae_flex_quickstart]
-import logging
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+import csv
+from werkzeug.exceptions import HTTPException
+from html import escape
+from flask import Flask, render_template, json, request
 
-from flask import Flask, render_template
-=======
->>>>>>> parent of bb676ff... Push 6
 
-from flask import Flask, render_template
-=======
-
-from flask import Flask, render_template
->>>>>>> parent of bb676ff... Push 6
-=======
-
-from flask import Flask, render_template
->>>>>>> parent of bb676ff... Push 6
-=======
-
-from flask import Flask, render_template
->>>>>>> parent of bb676ff... Push 6
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    return render_template('index.html', title="Home")
+    return render_template('index.html', title="Lynx - Home")
 
 
 @app.route('/lookup', methods=["GET"])
 def lookup():
     # do something with request.data
-    city = request.args.get("search")
-    print(city)
+    city = escape(request.args.get("search"))
 
+    filtered_data = []
 
-    return render_template("lookup_page.html", city=city, title="Lookup " + city)
+    with open("news.csv", "r") as readfile:
+        data = csv.reader(readfile)
+        for row in data:
+            if city.lower() in row[1].lower() and not row[10].lower() == "none":
+                filtered_data.append(row)
+
+    title = "Lookup " + city
+    if len(filtered_data) == 0:
+        city = ""
+        title = "Invalid search!"
+
+    img = get_img(city)
+    return render_template("lookup_page.html", city=city, title=title,
+                           data=filtered_data[:10], img=img)
 
 
 @app.errorhandler(HTTPException)
@@ -76,41 +67,22 @@ def handle_exception(e):
                            code=e.code, name=e.name,
                            description=e.description, title=(str(e.code) + " " + e.name))
 
-=======
-=======
->>>>>>> parent of bb676ff... Push 6
-=======
->>>>>>> parent of bb676ff... Push 6
-=======
->>>>>>> parent of bb676ff... Push 6
-=======
->>>>>>> parent of bb676ff... Push 6
-    return render_template('index.html')
+def get_img(city):
+    images = ["Philly", "Philadelphia", "SanDiego",
+              "Boston", "Chicago", "Houston",
+              "LogAngeles"]
 
-@app.errorhandler(500)
-def server_error(e):
-    logging.exception('An error occurred during a request.')
-    return """
-    An internal error occurred: <pre>{}</pre>
-    See logs for full stacktrace.
-    """.format(e), 500
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of bb676ff... Push 6
-=======
->>>>>>> parent of bb676ff... Push 6
-=======
->>>>>>> parent of bb676ff... Push 6
-=======
->>>>>>> parent of bb676ff... Push 6
-=======
->>>>>>> parent of bb676ff... Push 6
+    for image in images:
+        if city.lower().replace(" ", "") in image.lower():
+            return "/static/img/Avg" + image + "Sent.png"
+
+    return None
+
 
 
 if __name__ == '__main__':
     # This is used when running locally. Gunicorn is used to run the
     # application on Google App Engine. See entrypoint in app.yaml.
     app.run(host='127.0.0.1', port=8080, debug=True)
+
 # [END gae_flex_quickstart]
