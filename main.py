@@ -14,15 +14,20 @@
 
 # [START gae_flex_quickstart]
 import logging
+<<<<<<< HEAD
 
 from flask import Flask, render_template
+=======
+>>>>>>> parent of bb676ff... Push 6
 
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
+<<<<<<< HEAD
 <<<<<<< HEAD
     return render_template('index.html', title="Home")
 
@@ -54,6 +59,8 @@ def handle_exception(e):
                            description=e.description, title=(str(e.code) + " " + e.name))
 
 =======
+=======
+>>>>>>> parent of bb676ff... Push 6
     return render_template('index.html')
 
 @app.errorhandler(500)
@@ -63,6 +70,9 @@ def server_error(e):
     An internal error occurred: <pre>{}</pre>
     See logs for full stacktrace.
     """.format(e), 500
+<<<<<<< HEAD
+>>>>>>> parent of bb676ff... Push 6
+=======
 >>>>>>> parent of bb676ff... Push 6
 
 
