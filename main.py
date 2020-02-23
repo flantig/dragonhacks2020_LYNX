@@ -14,23 +14,42 @@
 
 # [START gae_flex_quickstart]
 import logging
+from werkzeug.exceptions import HTTPException
+from flask import Flask, render_template, json, request
 
-from flask import Flask, render_template
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', title="Home")
 
-@app.errorhandler(500)
-def server_error(e):
-    logging.exception('An error occurred during a request.')
-    return """
-    An internal error occurred: <pre>{}</pre>
-    See logs for full stacktrace.
-    """.format(e), 500
+
+@app.route('/lookup', methods=["GET"])
+def lookup():
+    # do something with request.data
+    city = request.args.get("search")
+    print(city)
+    return render_template("lookup_page.html", city=city, title="Lookup " + city)
+
+
+@app.errorhandler(HTTPException)
+def handle_exception(e):
+    """Return JSON instead of HTML for HTTP errors."""
+    # start with the correct headers and status code from the error
+    response = e.get_response()
+    # replace the body with JSON
+    response.data = json.dumps({
+        "code": e.code,
+        "name": e.name,
+        "description": e.description,
+    })
+    response.content_type = "application/json"
+    return render_template("generic_error.html",
+                           code=e.code, name=e.name,
+                           description=e.description, title=(str(e.code) + " " + e.name))
+
 
 
 if __name__ == '__main__':

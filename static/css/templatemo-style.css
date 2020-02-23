@@ -6,6 +6,8 @@ https://templatemo.com/tm-525-the-town
 
 */
 
+
+
 html {
   font-size: 18px;
 }
@@ -47,6 +49,11 @@ a:focus {
 
 .tm-font-big {
   font-size: 1.25rem;
+}
+
+.search-bar {
+  padding-top: 20%;
+  line-height: normal;
 }
 
 .tm-btn-primary {
@@ -132,11 +139,13 @@ a:focus {
 /* Hero */
 
 #hero {
-  background-image: url(../img/the-town-bg-01.jpg);
+  background-image: url(/static/img/the-town-bg-01.png);
   background-repeat: no-repeat;
   height: 100vh;
   min-height: 375px;
+  width: 100%;
   position: relative;
+  z-index: 1;
 }
 
 @media (min-height: 830px) {
@@ -416,7 +425,7 @@ figure.effect-honey:hover h2 i {
 
 #contact {
   color: white;
-  background-image: url(../img/the-town-bg-02.jpg);
+  background-image: url(/static/img/the-town-bg-02.jpg);
   background-position: center;
   background-repeat: no-repeat;
   min-height: 850px;
