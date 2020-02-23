@@ -18,6 +18,7 @@ from werkzeug.exceptions import HTTPException
 from flask import Flask, render_template, json, request
 
 
+
 app = Flask(__name__)
 
 
@@ -31,6 +32,8 @@ def lookup():
     # do something with request.data
     city = request.args.get("search")
     print(city)
+
+
     return render_template("lookup_page.html", city=city, title="Lookup " + city)
 
 
